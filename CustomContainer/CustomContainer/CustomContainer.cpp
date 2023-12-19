@@ -7,14 +7,15 @@
 int main()
 {
     Container<int> c;
-    for (size_t i = 0; i < 12; i++)
+    for (size_t i = 0; i < 20; i++)
     {
         c.push(i+10);
     }
     
-    for (size_t i = 0; i < 12; i++)
+    Container<int> c1(c);
+    for (size_t i = 0; i < 20; i++)
     {
-        std::cout << c.get(i)<<"  ";
+        std::cout << c1.get(i)<<"  ";
     }
 }
 

@@ -11,8 +11,18 @@ private:
 public:
 	Container()
 	{
-		data = new T(capacity);
+		data = new T[capacity];
 		
+	}
+
+	Container(Container& c)
+	{
+		data = new T[c.capacity];
+		size = c.size;
+		for (size_t i = 0; i < size; i++)
+		{
+			data[i] = c.data[i];
+		}
 	}
 
 	void push(T e);
@@ -44,11 +54,11 @@ template<typename T>
 void Container<T>::resize(size_t new_capacity)
 {
 	capacity = new_capacity;
-	T* new_data = new T(capacity);
+	T* new_data = new T[capacity];
 	for (size_t i = 0; i < size; i++)
 	{
 		new_data[i] = data[i];
 	}
-	
+	delete[] data;
 	data = new_data;
 }
